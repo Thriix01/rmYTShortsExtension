@@ -3,8 +3,15 @@
     "name": "Remove YT Shorts",
     "description": "Removes Occurences Of YT Shorts",
     "version": 1.0,
-    "permissions":[],
-    "host_permissions":[],
+    "permissions":[
+        "scripting",
+        "activeTab",
+        "tabs",
+        "webNavigation",
+        "contextMenus",
+        "storage"
+    ],
+    "host_permissions":["https://www.youtube.com/"],
     "background":{
         "service_worker": "background.js",
         "type": "module"
