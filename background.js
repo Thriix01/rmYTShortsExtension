@@ -1,9 +1,13 @@
-chrome.webNavigation.onCommited.addListener(function(tab){
+chrome.webNavigation.onCommitted.addListener(function(tab){
 
     if (tab.frameId == 0){
         chrome.tabs.query({active:true,lastFocusedWindow:true}, tabs => {
             let tabId = tabs[0].id
             let url = tabs[0].url
+
+            if (!url){
+                return;
+            }
 
             if (url == "https://www.youtube.com/"){
 
@@ -11,9 +15,9 @@ chrome.webNavigation.onCommited.addListener(function(tab){
                 return;
                 
 
-            } else if (url.includes("https://www.youtube.com/shorts")){
+            } else if (url.includes("youtube.com/shorts")){
 
-                window.location.replace("https://www.youtube.com/")
+                chrome.tabs.update(tabId, "https://www.youtube.com/")
                 return;
     
             }
